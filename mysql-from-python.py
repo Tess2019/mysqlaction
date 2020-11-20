@@ -5,9 +5,9 @@ connection = pymysql.connect(host='localhost',
                             db='Chinook')
 
 try: 
-     with connection.cursor() as cursor:
-         cursor.execute("""CREATE TABLE IF NOT EXISTS
-                            Friends(name char(20), age int, DOB datetime);""")
+    with connection.cursor() as cursor:
+            cursor.execute(" Update Friends Set age = 22 where name = 'Bob';")
+            connection.commit()
         
 finally:
     connection.close()                                  
