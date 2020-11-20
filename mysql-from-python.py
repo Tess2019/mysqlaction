@@ -1,4 +1,3 @@
-import datetime
 import pymysql
 connection = pymysql.connect(host='localhost',
                             password= '',
@@ -6,8 +5,7 @@ connection = pymysql.connect(host='localhost',
 
 try: 
     with connection.cursor() as cursor:
-            cursor.execute(" Update Friends Set age = 22 where name = 'Bob';")
+            rows = cursor.executemany(" Delete from Friends where name = %s;",['Bob', 'Jim'])
             connection.commit()
-        
 finally:
     connection.close()                                  
