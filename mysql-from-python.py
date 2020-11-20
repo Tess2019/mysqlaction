@@ -1,4 +1,4 @@
-
+import datetime
 import pymysql
 connection = pymysql.connect(host='localhost',
                             password= '',
@@ -6,9 +6,8 @@ connection = pymysql.connect(host='localhost',
 
 try: 
      with connection.cursor() as cursor:
-         sql = "SELECT * FROM Artist;"
-         cursor.execute(sql)
-         result = cursor.fetchall()
-         print(result)
+         cursor.execute("""CREATE TABLE IF NOT EXISTS
+                            Friends(name char(20), age int, DOB datetime);""")
+        
 finally:
     connection.close()                                  
